@@ -1,9 +1,11 @@
-from datetime import datetime, date, time
-
-
-def write_notepad(id, title, note):
+def write_notepad(id, title, note, date):
     with open("notepad.csv", "a") as notepad_file:
-        date_now = datetime.now()
-        date_now = date_now.strftime("%d.%m.%Y %H:%M")
-        note = (f"{id};{title};{note};{date_now}\n")
+        note = (f"{id};{title};{note};{date}\n")
         notepad_file.write(note)
+
+
+def write_notes_in_notepad(notes):
+    with open("notepad.csv", "w") as notepad_file:
+        for note in notes:
+            notepad_file.write(f"{note}\n")
+
